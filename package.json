@@ -1,5 +1,5 @@
 {
-    "homepage": "https://tuananh2401.github.io/react-portfolio",
+    "homepage": "https://TuanAnh2401.github.io/react-portfolio",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "name": "react-portfolio",
