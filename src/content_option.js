@@ -28,7 +28,7 @@ const worktimeline = [{
     {
         jobtitle: "Full Stack Developer",
         where: "Hutech Information Technology Management Center",
-        date: "2019",
+        date: "2023",
     }
 ];
 
