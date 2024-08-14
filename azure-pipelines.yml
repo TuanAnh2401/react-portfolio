@@ -1,0 +1,33 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'  
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x' 
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Install dependencies and build'
+
+- script: |
+    npm test -- --watchAll=false
+  displayName: 'Run tests'
+
+- task: CopyFiles@2
+  inputs:
+    contents: '**/build/**'  
+    targetFolder: $(Build.ArtifactStagingDirectory) 
+  displayName: 'Copy build artifacts'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'Publish build artifacts'
