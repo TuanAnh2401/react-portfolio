@@ -16,7 +16,7 @@ steps:
   displayName: 'Install dependencies and build'
 
 - script: |
-    npm test -- --watchAll=false
+    CI=true npm test
   displayName: 'Run tests'
 
 - task: Docker@2
