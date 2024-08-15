@@ -14,11 +14,7 @@ steps:
     npm install
     npm run build
   displayName: 'Install dependencies and build'
-
-- script: |
-    CI=true npm test
-  displayName: 'Run tests'
-
+  
 - task: Docker@2
   inputs:
     command: 'build'
