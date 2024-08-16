@@ -1,7 +1,7 @@
 const logotext = "ANH";
 const meta = {
     title: "Tuan Anh",
-    description: "I’m Tuan Anh Full stack devloper,currently working in Ho Chi Minh",
+    description: "I’m Tuan Anh Full stack devloper, currently working in Ho Chi Minh",
 };
 
 const introdata = {
