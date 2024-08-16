@@ -18,9 +18,9 @@ steps:
 - task: Docker@2
   inputs:
     command: 'build'
-    dockerfile: '**/Dockerfile' 
+    dockerfile: '**/Dockerfile'
     containerRegistry: 'dockerhub-connection'
-    repository: 'tuananh2401/my-app' 
+    repository: 'tuananh2401/my-app'
     tags: |
       $(Build.BuildId)
   displayName: 'Build Docker Image'
@@ -33,3 +33,7 @@ steps:
     tags: |
       $(Build.BuildId)
   displayName: 'Push Docker Image to Docker Hub'
+
+- script: |
+    curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_M0n6kkZleOgqfNpGwE75B6IJRWl7/IgxDWpx6TR
+  displayName: 'Trigger Vercel Deploy'
