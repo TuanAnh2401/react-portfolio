@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@1
+- task: NodeTool@0
   inputs:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
@@ -14,7 +14,7 @@ steps:
     npm install
     npm run build
   displayName: 'Install dependencies and build'
-
+  
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
