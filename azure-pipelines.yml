@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
+- task: NodeTool@1
   inputs:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
@@ -14,26 +14,19 @@ steps:
     npm install
     npm run build
   displayName: 'Install dependencies and build'
-  
+
 - task: Docker@2
   inputs:
-    command: 'build'
+    command: 'buildAndPush'
     dockerfile: '**/Dockerfile'
     containerRegistry: 'dockerhub-connection'
     repository: 'tuananh2401/my-app'
     tags: |
       $(Build.BuildId)
-  displayName: 'Build Docker Image'
-
-- task: Docker@2
-  inputs:
-    command: 'push'
-    containerRegistry: 'dockerhub-connection'
-    repository: 'tuananh2401/my-app'
-    tags: |
-      $(Build.BuildId)
-  displayName: 'Push Docker Image to Docker Hub'
+  displayName: 'Build and Push Docker Image'
 
 - script: |
-    curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_M0n6kkZleOgqfNpGwE75B6IJRWl7/IgxDWpx6TR
+    curl -X POST -H "Authorization: Bearer $(VercelToken)" https://api.vercel.com/v1/integrations/deploy/prj_M0n6kkZleOgqfNpGwE75B6IJRWl7/IgxDWpx6TR
   displayName: 'Trigger Vercel Deploy'
+  env:
+    VercelToken: $(VercelToken)
