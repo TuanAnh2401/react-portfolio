@@ -19,7 +19,7 @@ steps:
   displayName: 'Build application'
   
 - script: |
-    CI=true npm test
+    CI=true&&npm test
   displayName: 'Run tests'
 
 - task: Docker@2
