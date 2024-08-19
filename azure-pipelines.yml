@@ -13,14 +13,14 @@ steps:
 - script: |
     npm install
   displayName: 'Install dependencies'
-
-- script: |
-    npm run build
-  displayName: 'Build application'
   
 - script: |
-    CI=true&&npm test
+    CI=true npm test
   displayName: 'Run tests'
+
+- script: |
+    CI=true npm run build
+  displayName: 'Build application'
 
 - task: Docker@2
   inputs:
