@@ -17,6 +17,10 @@ steps:
 - script: |
     npm run build
   displayName: 'Build application'
+  
+- script: |
+    npm test
+  displayName: 'Run tests'
 
 - task: Docker@2
   inputs:
@@ -29,11 +33,8 @@ steps:
       $(Build.BuildId)
   displayName: 'Build and Push Docker Image'
 
-- task: Docker@2
-  inputs:
-    command: 'run'
-    containerRegistry: 'dockerhub-connection'
-    repository: 'tuananh2401/my-app'
-    tags: 'latest'
-    detach: true
-  displayName: 'Deploy Docker Container'
+- script: |
+    curl -X POST -H "Authorization: Bearer $(VercelToken)" https://api.vercel.com/v1/integrations/deploy/prj_M0n6kkZleOgqfNpGwE75B6IJRWl7/IgxDWpx6TR
+  displayName: 'Trigger Vercel Deploy'
+  env:
+    VercelToken: $(VercelToken)
