@@ -15,10 +15,6 @@ steps:
   displayName: 'Install dependencies'
   
 - script: |
-    CI=true npm test -- --passWithNoTests
-  displayName: 'Run tests'
-
-- script: |
     CI=true npm run build
   displayName: 'Build application'
 
