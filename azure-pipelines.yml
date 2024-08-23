@@ -15,22 +15,16 @@ steps:
   displayName: 'Install dependencies'
   
 - script: |
-    CI=true npm run build
+    npm run build
   displayName: 'Build application'
 
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
     repository: 'tuananh2401/my-app'
-    dockerfile: '**/Dockerfile'
+    dockerfile: './Dockerfile'
     containerRegistry: 'dockerhub-connection'
     tags: |
       latest
       $(Build.BuildId)
   displayName: 'Build and Push Docker Image'
-
-- script: |
-    curl -X POST -H "Authorization: Bearer $(VercelToken)" https://api.vercel.com/v1/integrations/deploy/prj_M0n6kkZleOgqfNpGwE75B6IJRWl7/IgxDWpx6TR
-  displayName: 'Trigger Vercel Deploy'
-  env:
-    VercelToken: $(VercelToken)
