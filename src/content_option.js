@@ -12,7 +12,7 @@ const introdata = {
         third: "Building innovative apps",
     },    
     description: "As a senior student Information Technology student at Hutech University, I have extensive programming and information technology experience.",
-    your_img_url: "https://camo.githubusercontent.com/4d9f5ecceb711eec6e2018f38a5677dc657c9738d4a65ba3b928c41c0a45b439/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313336302f302a37513379765349765f7430696f4a2d5a2e676966",
+    your_img_url: "https://camo.githubusercontent.com/0eda36005abd9bf7e72584afc2f6ef1e808a357cb65a07fc2fe5036ba5268df7/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f65382f66342f35332f65386634353334363961336563393765636433353464663436356437333931332e676966",
 };
 
 const dataabout = {
